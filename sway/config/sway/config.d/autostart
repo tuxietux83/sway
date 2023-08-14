@@ -1,0 +1,6 @@
+exec $HOME/bin/autostart-sway.sh
+exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+exec mako
+exec nm-applet --indicator
+exec pasystray
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY WAYSOCK
