@@ -21,7 +21,7 @@ function reconfig_meson() {
 #sudo updatedb
 
 ## deps
-# fish 
+# fish ...
 
 
 [ ! -d sway ] && git clone https://github.com/swaywm/sway.git
