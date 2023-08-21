@@ -26,9 +26,7 @@ apps=(
 	intel-media-va-driver
 	vainfo
 	dunst
-	mako-notifier
 	fonts-font-awesome
-	gtk-theme-switch
 	libnotify-bin
 	wofi
 )
