@@ -85,6 +85,13 @@ build=(
 	xwayland
 )
 
+# not sure about this, will see
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
+export PKG_CONFIG_PATH=/usr/local/lib64/pkgconfig:$PKG_CONFIG_PATH
+export PKG_CONFIG_PATH=/usr/local/share/pkgconfig:$PKG_CONFIG_PATH
+export LD_LIBRARY_PATH=/usr/local/lib/:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/usr/local/lib64/:$LD_LIBRARY_PATH
+
 sudo apt install -y "${build[@]}"
 sudo apt install -y "${apps[@]}"
 sudo apt install -y xmlto --no-install-recommends
