@@ -7,7 +7,7 @@ if [ $(id -u) -eq 0 ]; then
 fi
 # set 1 to pass without prompting
 # set 0 for ptomp and running just meson setup
-build_ninja="0"
+build_ninja="1"
 #### Sway
 ## Misc
 sudo apt-get update
@@ -26,6 +26,9 @@ apps=(
 	wofi
 	thunar
 	udiskie
+	firefox-esr
+	geany
+	thunar
 )
 system=(
 	[title]="System-Applications"
@@ -121,6 +124,7 @@ xdg_desktop_portal_wlr=(
 	[title]="Desktop-portals"
 	libpipewire-0.3-dev
 	libinih-dev
+	libiniparser-dev
 	xdg-desktop-portal
 	xdg-desktop-portal-gtk
 )
@@ -228,7 +232,7 @@ sed -i -e 's/zext_workspace_handle_v1_activate(workspace_handle_);/const std::st
 # somehow iniparser needs to be in /usr/include, so let it be
 [ ! -f /usr/include/iniparser.h ] && sudo ln -s -v /usr/include/iniparser/* /usr/include/
 [ ! -d build ] && meson setup --auto-features=enabled build
-[ -d build ] && meson setup --auto-features=enabled build --wipe
+[ -d build ] && rm -rfv build && meson setup --auto-features=enabled build
 meson configure -Dexperimental=true build
 [ "$build_ninja" = 0 ] && read -p "Config passed ok?!"
 [ "$build_ninja" = 1 ] && ninja -C build
@@ -273,13 +277,8 @@ case $backup in
 	Y|y)
 	source_dir="dot/config"
 	dest_dir="$HOME/.config/backup/${date_tag}"
-	echo -e "${info}: ${yellow}BackingUp${default}: $HOME/.config/backup/${date_tag}"
+	echo -e "BackingUp to: $HOME/.config/backup/${date_tag}"
 	mkdir -pv "$HOME/.config/backup/${date_tag}"
-		if [ -d "$HOME/.config/systemd" ]; then
-			exclude_dir="systemd"
-		else
-			exclude_dir=""
-		fi
 	directories=($(ls -1 "$source_dir"))
 		for dir in "${directories[@]}"; do
     		mv_dir="$HOME/.config/$dir"
@@ -287,17 +286,19 @@ case $backup in
 				mv -v "$mv_dir" "$dest_dir"
 			fi
 		done
-	rsync -av "$source_dir/" "$HOME/.config"
-	# adding bin files
-	[ ! -d "$HOME/bin" ] && mkdir -pv "$HOME/bin"
-	rsync -av "$source_dir/*" "$HOME/bin"
+	rsync -av "$source_dir/" "$HOME/.config/"
+	rsync -av "dot/bin/" "$HOME/bin/"
+	chmod +x "$HOME/bin"/*
+	ls -al "$HOME/bin"
+	echo "Done!"
+	exit 0
 	;;
 	N|n)
-	echo -e "${action} ${yellow} Nothing to do ${default}."
+	echo -e "Nothing to do."
 	exit 0
 	;;
 	*)
-	echo -e "${info}: ${red}Invalid option${default}!"
+	echo -e "Invalid option$!"
 	;;
 esac
 done
