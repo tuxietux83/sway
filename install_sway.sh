@@ -5,9 +5,9 @@ if [ $(id -u) -eq 0 ]; then
 	echo "Please execute this script as a regular user."
 	exit 1
 fi
-# set 0 to pass without prompting
-# set 1 for ptomp and running just meson setup
-build_ninja="1"
+# set 1 to pass without prompting
+# set 0 for ptomp and running just meson setup
+build_ninja="0"
 #### Sway
 ## Misc
 sudo apt-get update
@@ -252,7 +252,6 @@ read -p "check for folder structure"
 # Getting the config files from git
 [ ! -d dot ] && git clone http://github.com/tuxietux83/dot.git
 
-exit 1
 sudo systemctl enable acpi
 sudo systemctl enable avahi-daemon
 
