@@ -290,7 +290,7 @@ case $backup in
 	rsync -av "$source_dir/" "$HOME/.config"
 	# adding bin files
 	[ ! -d "$HOME/bin" ] && mkdir -pv "$HOME/bin"
-	cp -v "$source_dir/*" "$HOME/bin"
+	cp -v "$source_dir"/* "$HOME/bin"
 	;;
 	N|n)
 	echo -e "${action} ${yellow} Nothing to do ${default}."
