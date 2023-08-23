@@ -46,6 +46,7 @@ system=(
 	gvfs-fuse
 	gvfs-backends
 	polkit-kde-agent-1
+	rsync
 )
 build_essentials=(
 	[title]="Compiling"
