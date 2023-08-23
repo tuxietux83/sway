@@ -252,7 +252,7 @@ read -p "check for folder structure"
 # Getting the config files from git
 [ ! -d dot ] && git clone http://github.com/tuxietux83/dot.git
 
-sudo systemctl enable acpi
+sudo systemctl enable acpid
 sudo systemctl enable avahi-daemon
 
 # Adding user to group input
