@@ -26,6 +26,7 @@ apps=(
 	thunar
 	udiskie
  	firefox-esr
+	geany
   	mpv
 )
 system=(
@@ -47,6 +48,12 @@ system=(
 	gvfs-backends
 	polkit-kde-agent-1
 	rsync
+  	gnome-icon-theme
+	tango-icon-theme
+	arc-theme
+	breeze-gtk-theme
+	breeze-icon-theme
+	breeze-cursor-theme
 )
 build_essentials=(
 	build-essential
