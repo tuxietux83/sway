@@ -189,6 +189,24 @@ echo -e "${info} :${yellow} Removing${default} install${yellow} directory${defau
 sudo systemctl enable acpid.service
 sudo systemctl enable avahi-daemon.service
 
+while true; do
+echo -e "${info} :${yellow} Choose your${green} Login Manager${default} :"
+read -p "${action} : 1${green} Gnome Login Manager${default} \n2 ${green} Plasma Login Manager${default} \n:" lm
+case $lm in
+	1)
+	sudo "$pkg_mngr" install gdm3 --no-install-recommends
+	break
+	;;
+	2)
+	sudo "$pkg_mngr" install sddm --no-install-recommends
+	break
+	;;
+	*)
+	echo -e "${action} :${red} Invalid option ${magenta} $backup${default} !"
+	;;
+esac
+done
+
 # Getting the config files from git
 [ ! -d dot ] && git clone http://github.com/tuxietux83/dot.git
 # Adding user to group input
