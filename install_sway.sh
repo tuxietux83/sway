@@ -51,10 +51,15 @@ network=(
 	wpasupplicant
 )
 libs_gtk_qt=(
-	[title]="QT_GTK_Libs"
+	[title]="QT-GTK_Libs"
 	qtwayland5
 	qt6-wayland
 	qt5ct
+)
+build=(
+	[title]=Build-Essentials
+ 	build-essential
+  	golang
 )
 system=(
 	[title]="System"
@@ -85,7 +90,7 @@ sway=(
 
 PKG_LIST=( "${apps[*]}" "${appeareance[*]}" "${nwg_look[*]}" "${audio[*]}"\
 	"${video[*]}" "${fonts[*]}" "${network[*]}" "${libs_gtk_qt[*]}"\
-	"${system[*]}" "${sway[*]}" )
+	"${build{[*]}" "${system[*]}" "${sway[*]}" )
 	
 ## Misc
 sudo apt-get update
