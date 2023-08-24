@@ -29,6 +29,7 @@ apps=(
 	firefox-esr
 	geany
 	thunar
+ 	mpv
 )
 system=(
 	[title]="System-Applications"
