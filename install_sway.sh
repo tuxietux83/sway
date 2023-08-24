@@ -28,7 +28,6 @@ apps=(
 	udiskie
 	firefox-esr
 	geany
-	thunar
  	mpv
 )
 system=(
