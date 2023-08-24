@@ -25,6 +25,8 @@ apps=(
 	wofi
 	thunar
 	udiskie
+ 	firefox-esr
+  	mpv
 )
 system=(
 	acpi
