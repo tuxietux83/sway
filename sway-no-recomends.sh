@@ -199,6 +199,14 @@ cd sway
 [ "$build_ninja" = 0 ] && read -p "Config passed ok?!"
 [ "$build_ninja" = 1 ] && ninja -C build
 [ "$build_ninja" = 1 ] && sudo ninja -C build install
+if [ ! -d /usr/share/wayland-sessions ]; then
+	sudo mkdir -p -v /usr/share/wayland-sessions
+	echo -e "wayland-sessions created in /usr/share/"
+	if [ ! -f /usr/share/wayland-sessions/sway.desktop ]; then
+		sudo cp -v sway.desktop /usr/share/wayland-sessions/
+		echo "Copy hyprland.desktop to: /usr/share/wayland-sessions"
+	fi
+else
 cd ..
 
 #XDG-desktop-portal-wlr git
