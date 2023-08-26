@@ -164,11 +164,14 @@ pkg_list=( "${apps[*]}" "${system[*]}" "${build_essentials[*]}" "${lib_sway[*]}"
 		"${wayland_protocols[*]}" "${wlroots[*]}" "${xdg_desktop_portal_wlr[*]}" "${waybar[*]}" )
 
 # To build, we need some paths to export
-export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
-export PKG_CONFIG_PATH=/usr/local/lib64/pkgconfig:$PKG_CONFIG_PATH
-export PKG_CONFIG_PATH=/usr/local/share/pkgconfig:$PKG_CONFIG_PATH
-export LD_LIBRARY_PATH=/usr/local/lib/:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=/usr/local/lib64/:$LD_LIBRARY_PATH
+export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig:$PKG_CONFIG_PATH
+export PKG_CONFIG_PATH=/usr/share/pkgconfig:$PKG_CONFIG_PATH
+#export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
+#export PKG_CONFIG_PATH=/usr/local/lib64/pkgconfig:$PKG_CONFIG_PATH
+#export PKG_CONFIG_PATH=/usr/local/share/pkgconfig:$PKG_CONFIG_PATH
+export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
+#export LD_LIBRARY_PATH=/usr/local/lib/:$LD_LIBRARY_PATH
+#export LD_LIBRARY_PATH=/usr/local/lib64/:$LD_LIBRARY_PATH
 
 for building in "${pkg_list[@]}";do
 var_title=$(echo "$building" | cut -d' ' -f1)
